@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://qcm/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="myws" targetNamespace="http://qcm/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/QCM/myws?xsd=1" namespace="http://qcm/" />
+    </xsd:schema>
+  </types>
+  <message name="test">
+    <part name="parameters" element="tns:test" />
+  </message>
+  <message name="testResponse">
+    <part name="parameters" element="tns:testResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="hello">
+    <part name="parameters" element="tns:hello" />
+  </message>
+  <message name="helloResponse">
+    <part name="parameters" element="tns:helloResponse" />
+  </message>
+  <message name="question">
+    <part name="parameters" element="tns:question" />
+  </message>
+  <message name="questionResponse">
+    <part name="parameters" element="tns:questionResponse" />
+  </message>
+  <message name="rep">
+    <part name="parameters" element="tns:rep" />
+  </message>
+  <message name="repResponse">
+    <part name="parameters" element="tns:repResponse" />
+  </message>
+  <message name="matiere">
+    <part name="parameters" element="tns:matiere" />
+  </message>
+  <message name="matiereResponse">
+    <part name="parameters" element="tns:matiereResponse" />
+  </message>
+  <portType name="myws">
+    <operation name="test">
+      <input wsam:Action="http://qcm/myws/testRequest" message="tns:test" />
+      <output wsam:Action="http://qcm/myws/testResponse" message="tns:testResponse" />
+      <fault wsam:Action="http://qcm/myws/test/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="hello">
+      <input wsam:Action="http://qcm/myws/helloRequest" message="tns:hello" />
+      <output wsam:Action="http://qcm/myws/helloResponse" message="tns:helloResponse" />
+    </operation>
+    <operation name="question">
+      <input wsam:Action="http://qcm/myws/questionRequest" message="tns:question" />
+      <output wsam:Action="http://qcm/myws/questionResponse" message="tns:questionResponse" />
+      <fault wsam:Action="http://qcm/myws/question/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="rep">
+      <input wsam:Action="http://qcm/myws/repRequest" message="tns:rep" />
+      <output wsam:Action="http://qcm/myws/repResponse" message="tns:repResponse" />
+      <fault wsam:Action="http://qcm/myws/rep/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="matiere">
+      <input wsam:Action="http://qcm/myws/matiereRequest" message="tns:matiere" />
+      <output wsam:Action="http://qcm/myws/matiereResponse" message="tns:matiereResponse" />
+      <fault wsam:Action="http://qcm/myws/matiere/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="mywsPortBinding" type="tns:myws">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="test">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="hello">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="question">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="rep">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="matiere">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="myws">
+    <port name="mywsPort" binding="tns:mywsPortBinding">
+      <soap:address location="http://localhost:8080/QCM/myws" />
+    </port>
+  </service>
+</definitions>
